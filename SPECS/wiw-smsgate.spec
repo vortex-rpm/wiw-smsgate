@@ -11,8 +11,6 @@ Vendor:         Vortex RPM
 Group:          Applications/Internet
 License:        MIT
 URL:            http://github.com/%{github_user}/%{github_repo}
-Source:         /dev/null
-NoSource:       0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -24,11 +22,13 @@ own XML-RPC gateway. This project is here just because I was too lazy to setup
 an internal git repository. Obviously, this utility is only usable for us,
 sorry for that.
 
-%prep
+%build
 curl -L -o %{github_repo}-%{github_tag}.tar.gz https://github.com/%{github_user}/%{github_repo}/archive/%{github_tag}.tar.gz
-%setup -q
+tar xf %{github_repo}-%{github_tag}.tar.gz
+cd %{github_repo}-%{github_tag}
 
 %install
+cd %{github_repo}-%{github_tag}
 %{__rm} -rf %{buildroot}
 %{__python} setup.py install --root %{buildroot}
 
@@ -36,6 +36,7 @@ curl -L -o %{github_repo}-%{github_tag}.tar.gz https://github.com/%{github_user}
 %{__rm} -rf %{buildroot}
 
 %check
+cd %{github_repo}-%{github_tag}
 nosetests
 
 %files
