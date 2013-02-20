@@ -30,6 +30,7 @@ tar xf %{github_repo}-%{github_tag}.tar.gz
 cd %{github_repo}-%{github_tag}
 
 %install
+cd %{github_repo}-%{github_tag}
 %{__rm} -rf %{buildroot}
 %{__python} setup.py install --root %{buildroot}
 
@@ -37,6 +38,7 @@ cd %{github_repo}-%{github_tag}
 %{__rm} -rf %{buildroot}
 
 %check
+cd %{github_repo}-%{github_tag}
 virtualenv env
 source env/bin/activate
 %{__pip} install .
@@ -46,7 +48,7 @@ rm -rf env
 
 %files
 %defattr(-,root,root,-)
-%doc PKG-INFO LICENSE README.md
+%doc %{github_repo}-%{github_tag}/PKG-INFO %{github_repo}-%{github_tag}/LICENSE %{github_repo}-%{github_tag}/README.md
 %attr(755,root,root) %{_bindir}/wiw-smsgate
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
