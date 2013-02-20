@@ -1,6 +1,6 @@
 %global github_user thesharp
 %global github_repo wiw-smsgate
-%global github_tag 0.2
+%global github_tag 0.3
 
 %global __pip pip
 
@@ -33,6 +33,7 @@ cd %{github_repo}-%{github_tag}
 cd %{github_repo}-%{github_tag}
 %{__rm} -rf %{buildroot}
 %{__python} setup.py install --root %{buildroot}
+mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -53,6 +54,9 @@ rm -rf env
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
+* Wed Feb 20 2013 Ilya A. Otyutskiy <sharp@thesharp.ru> - 0.3-1.vortex
+- Well, it should be like that from the start.
+
 * Wed Feb 20 2013 Ilya A. Otyutskiy <sharp@thesharp.ru> - 0.2-1.vortex
 - Improved testsuite.
 
