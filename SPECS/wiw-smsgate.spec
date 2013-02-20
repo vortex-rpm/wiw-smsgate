@@ -25,7 +25,8 @@ an internal git repository. Obviously, this utility is only usable for us,
 sorry for that.
 
 %prep
-tar xf %{github_repo}-%{github_tag}
+curl -L -o %{github_repo}-%{github_tag}.tar.gz https://github.com/%{github_user}/%{github_repo}/archive/%{github_tag}.tar.gz
+tar xf %{github_repo}-%{github_tag}.tar.gz
 cd %{github_repo}-%{github_tag}
 
 %install
