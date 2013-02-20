@@ -35,6 +35,7 @@ cd %{github_repo}-%{github_tag}
 %{__python} setup.py install --root %{buildroot}
 mkdir -p %{buildroot}/etc
 mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
+ls -la
 
 %clean
 %{__rm} -rf %{buildroot}
