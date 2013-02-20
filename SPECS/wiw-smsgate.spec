@@ -2,6 +2,8 @@
 %global github_repo wiw-smsgate
 %global github_tag 0.1
 
+%global __pip pip-python
+
 Name:           python-%{github_repo}
 Version:        %{github_tag}
 Release:        1.vortex%{?dist}
@@ -37,9 +39,9 @@ cd %{github_repo}-%{github_tag}
 
 %check
 cd %{github_repo}-%{github_tag}
-pip install .
+%{__pip} install .
 nosetests
-pip uninstall . -y
+%{__pip} uninstall . -y
 
 %files
 %defattr(-,root,root,-)
