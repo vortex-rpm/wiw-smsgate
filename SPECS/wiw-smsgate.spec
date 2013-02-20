@@ -22,9 +22,10 @@ own XML-RPC gateway. This project is here just because I was too lazy to setup
 an internal git repository. Obviously, this utility is only usable for us,
 sorry for that.
 
-%prep
-curl -O https://github.com/%{github_user}/%{github_repo}/archive/%{github_tag}.tar.gz
-%setup -q -n %{github_tag}.tar.gz
+%build
+curl -L -O -o %{github_repo}-%{github_tag}.tar.gz https://github.com/%{github_user}/%{github_repo}/archive/%{github_tag}.tar.gz
+tar xf %{github_repo}-%{github_tag}.tar.gz
+cd %{github_repo}-%{github_tag}
 
 %install
 %{__rm} -rf %{buildroot}
