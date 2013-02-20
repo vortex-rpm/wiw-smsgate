@@ -51,7 +51,7 @@ rm -rf env
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE README.md
+%doc %{github_repo}-%{github_tag}/LICENSE %{github_repo}-%{github_tag}/README.md
 %attr(755,root,root) %{_bindir}/wiw-smsgate
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
