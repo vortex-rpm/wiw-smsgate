@@ -2,8 +2,8 @@
 %global github_repo wiw-smsgate
 %global github_tag 0.1
 
-Name:           python-%{github-repo}
-Version:        %{github-tag}
+Name:           python-%{github_repo}
+Version:        %{github_tag}
 Release:        1.vortex%{?dist}
 Summary:        In-house Python utility to send text messages
 Vendor:         Vortex RPM
