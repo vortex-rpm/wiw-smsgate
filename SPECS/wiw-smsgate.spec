@@ -1,6 +1,6 @@
 %global github_user thesharp
 %global github_repo wiw-smsgate
-%global github_tag 0.1
+%global github_tag 0.2
 
 %global __pip pip
 
@@ -53,6 +53,9 @@ rm -rf env
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
+* Wed Feb 20 2013 Ilya A. Otyutskiy <sharp@thesharp.ru> - 0.2-1.vortex
+- Improved testsuite.
+
 * Wed Feb 20 2013 Ilya A. Otyutskiy <sharp@thesharp.ru> - 0.1-1.vortex
 - Initial packaging.
 
