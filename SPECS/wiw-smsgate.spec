@@ -10,11 +10,11 @@ Vendor:         Vortex RPM
 
 Group:          Applications/Internet
 License:        MIT
-URL:            http://github.com/%{github-user}/%{github-repo}
+URL:            http://github.com/%{github_user}/%{github_repo}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  python-devel, python-pip, curl
+BuildRequires:  python-devel, python-pip, python-nose, curl
 
 %description
 This is our in-house utility to send text messages (SMS) from Nagios using our
@@ -32,6 +32,9 @@ curl -O https://github.com/%{github_user}/%{github_repo}/archive/%{github_tag}.t
 
 %clean
 %{__rm} -rf %{buildroot}
+
+%check
+nosetests
 
 %files
 %defattr(-,root,root,-)
