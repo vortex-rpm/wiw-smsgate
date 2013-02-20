@@ -13,7 +13,7 @@ Vendor:         Vortex RPM
 Group:          Applications/Internet
 License:        MIT
 URL:            http://github.com/%{github_user}/%{github_repo}
-Source:         dummy
+Source0:        dummy
 NoSource:       0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
