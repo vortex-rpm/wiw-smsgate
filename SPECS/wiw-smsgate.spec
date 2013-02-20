@@ -27,7 +27,8 @@ an internal git repository. Obviously, this utility is only usable for us,
 sorry for that.
 
 %prep
-%setup -q
+tar xf %{github_repo}-%{github_tag}
+cd %{github_repo}-%{github_tag}
 
 %install
 %{__rm} -rf %{buildroot}
