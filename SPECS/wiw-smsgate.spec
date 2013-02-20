@@ -16,7 +16,7 @@ URL:            http://github.com/%{github_user}/%{github_repo}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  python-devel, python-pip, python-nose, curl
+BuildRequires:  python-devel, python-pip, python-nose, python-virtualenv, curl
 
 %description
 This is our in-house utility to send text messages (SMS) from Nagios using our
@@ -39,9 +39,12 @@ cd %{github_repo}-%{github_tag}
 
 %check
 cd %{github_repo}-%{github_tag}
+virtualenv env
+source env/bin/activate
 %{__pip} install .
 nosetests
-%{__pip} uninstall . -y
+deactivate
+rm -rf env
 
 %files
 %defattr(-,root,root,-)
