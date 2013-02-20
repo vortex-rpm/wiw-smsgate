@@ -24,6 +24,8 @@ sorry for that.
 
 %build
 curl -L -O -o %{github_repo}-%{github_tag}.tar.gz https://github.com/%{github_user}/%{github_repo}/archive/%{github_tag}.tar.gz
+pwd
+ls -la
 tar xf %{github_repo}-%{github_tag}.tar.gz
 cd %{github_repo}-%{github_tag}
 
