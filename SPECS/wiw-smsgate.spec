@@ -37,7 +37,9 @@ cd %{github_repo}-%{github_tag}
 
 %check
 cd %{github_repo}-%{github_tag}
+pip install .
 nosetests
+pip uninstall . -y
 
 %files
 %defattr(-,root,root,-)
