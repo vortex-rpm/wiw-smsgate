@@ -35,8 +35,6 @@ cd %{github_repo}-%{github_tag}
 %{__python} setup.py install --root %{buildroot}
 mkdir -p %{buildroot}/etc
 mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
-#rm -rf %{buildroot}/usr/lib
-ls -lR %{buildroot}/usr/lib
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -54,6 +52,7 @@ rm -rf env
 %defattr(-,root,root,-)
 %doc %{github_repo}-%{github_tag}/LICENSE %{github_repo}-%{github_tag}/README.md
 %attr(755,root,root) %{_bindir}/wiw-smsgate
+%attr{644,root,root} %{_libdir}/python2.6/site-packages/smsgate.py
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
