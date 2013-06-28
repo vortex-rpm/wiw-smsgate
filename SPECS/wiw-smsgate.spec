@@ -34,7 +34,9 @@ cd %{github_repo}-%{github_tag}
 %{__rm} -rf %{buildroot}
 %{__python} setup.py install --root %{buildroot}
 mkdir -p %{buildroot}/etc
+mkdir -p %{buildroot}%{_libdir}/python2.6/site-packages
 mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
+mv %{buildroot}/usr/lib/python2.6/site-packages/smsgate.py %{buildroot}%{_libdir}/python2.6/site-packages/
 
 %clean
 %{__rm} -rf %{buildroot}
