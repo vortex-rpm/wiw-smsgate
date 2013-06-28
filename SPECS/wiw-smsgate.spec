@@ -1,6 +1,6 @@
 %global github_user thesharp
 %global github_repo wiw-smsgate
-%global github_tag 0.3
+%global github_tag 1.1
 
 %global __pip pip
 
@@ -56,6 +56,9 @@ rm -rf env
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
+* Fri Jun 28 2013 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.1-1.vortex
+- Update to 1.1.
+
 * Wed Feb 20 2013 Ilya A. Otyutskiy <sharp@thesharp.ru> - 0.3-1.vortex
 - Well, it should be like that from the start.
 
