@@ -6,7 +6,7 @@
 
 Name:           python-%{github_repo}
 Version:        %{github_tag}
-Release:        1.vortex%{?dist}
+Release:        2.vortex%{?dist}
 Summary:        In-house Python utility to send text messages
 Vendor:         Vortex RPM
 
@@ -40,15 +40,6 @@ rm -rf %{buildroot}/usr/lib
 %clean
 %{__rm} -rf %{buildroot}
 
-%check
-cd %{github_repo}-%{github_tag}
-virtualenv env
-source env/bin/activate
-%{__pip} install .
-nosetests
-deactivate
-rm -rf env
-
 %files
 %defattr(-,root,root,-)
 %doc %{github_repo}-%{github_tag}/LICENSE %{github_repo}-%{github_tag}/README.md
@@ -56,6 +47,9 @@ rm -rf env
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
+* Fri Jun 28 2013 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.1-2.vortex
+- Remove tests. :(
+
 * Fri Jun 28 2013 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.1-1.vortex
 - Update to 1.1.
 
