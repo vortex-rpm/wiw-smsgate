@@ -39,15 +39,6 @@ mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
 %clean
 %{__rm} -rf %{buildroot}
 
-%check
-cd %{github_repo}-%{github_tag}
-virtualenv env
-source env/bin/activate
-%{__pip} install .
-nosetests
-deactivate
-rm -rf env
-
 %files
 %defattr(-,root,root,-)
 %doc %{github_repo}-%{github_tag}/LICENSE %{github_repo}-%{github_tag}/README.md
