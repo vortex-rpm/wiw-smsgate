@@ -4,6 +4,8 @@
 
 %global __pip pip
 
+%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
+
 Name:           python-%{github_repo}
 Version:        %{github_tag}
 Release:        2.vortex%{?dist}
@@ -37,6 +39,7 @@ mkdir -p %{buildroot}/etc
 mkdir -p %{buildroot}%{_libdir}/python2.6/site-packages
 mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
 mv %{buildroot}/usr/lib/python2.6/site-packages/smsgate.py %{buildroot}%{_libdir}/python2.6/site-packages/
+rm -rf %{buildroot}/usr/lib
 
 %clean
 %{__rm} -rf %{buildroot}
