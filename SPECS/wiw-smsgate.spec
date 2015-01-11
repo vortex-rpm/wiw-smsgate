@@ -6,6 +6,12 @@
 
 %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
 
+%if 0{?rhel} == 6
+%global _py_ver 2.6
+%else
+%global _py_ver 2.7
+%endif
+
 Name:           python-%{github_repo}
 Version:        %{github_tag}
 Release:        2.vortex%{?dist}
@@ -18,7 +24,7 @@ URL:            http://github.com/%{github_user}/%{github_repo}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  python-devel, python-pip, python-nose, python-virtualenv
+BuildRequires:  python-devel
 
 %description
 This is our in-house utility to send text messages (SMS) from Nagios using our
@@ -36,9 +42,9 @@ cd %{github_repo}-%{github_tag}
 %{__rm} -rf %{buildroot}
 %{__python} setup.py install --root %{buildroot}
 mkdir -p %{buildroot}/etc
-mkdir -p %{buildroot}%{_libdir}/python2.6/site-packages
+mkdir -p %{buildroot}%{_libdir}/python%{_py_ver}/site-packages
 mv %{buildroot}/usr/etc/wiw-smsgate.conf %{buildroot}/etc/wiw-smsgate.conf
-mv %{buildroot}/usr/lib/python2.6/site-packages/smsgate.py %{buildroot}%{_libdir}/python2.6/site-packages/
+mv %{buildroot}/usr/lib/python%{_py_ver}/site-packages/smsgate.py %{buildroot}%{_libdir}/python%{_py_ver}/site-packages/
 rm -rf %{buildroot}/usr/lib
 
 %clean
@@ -48,10 +54,13 @@ rm -rf %{buildroot}/usr/lib
 %defattr(-,root,root,-)
 %doc %{github_repo}-%{github_tag}/LICENSE %{github_repo}-%{github_tag}/README.md
 %attr(755,root,root) %{_bindir}/wiw-smsgate
-%attr(644,root,root) %{_libdir}/python2.6/site-packages/smsgate.py
+%attr(644,root,root) %{_libdir}/python%{_py_ver}/site-packages/smsgate.py
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
+* Mon Jan 12 2014 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.1-3.vortex
+- Let's try this ugly hack to build for both EL6 and EL7.
+
 * Fri Jun 28 2013 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.1-2.vortex
 - Blah.
 
