@@ -6,7 +6,7 @@
 
 %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
 
-%if 0{?rhel} == 6
+%if 0%{?rhel} == 6
 %global _py_ver 2.6
 %else
 %global _py_ver 2.7
