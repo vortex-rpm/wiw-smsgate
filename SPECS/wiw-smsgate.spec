@@ -24,7 +24,7 @@ URL:            http://github.com/%{github_user}/%{github_repo}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  python-devel
+BuildRequires:  python-devel, python-pip, python-nose, python-virtualenv
 
 %description
 This is our in-house utility to send text messages (SMS) from Nagios using our
