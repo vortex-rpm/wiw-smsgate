@@ -14,7 +14,7 @@
 
 Name:           python-%{github_repo}
 Version:        %{github_tag}
-Release:        2.vortex%{?dist}
+Release:        3.vortex%{?dist}
 Summary:        In-house Python utility to send text messages
 Vendor:         Vortex RPM
 
