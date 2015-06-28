@@ -1,6 +1,6 @@
 %global github_user thesharp
 %global github_repo wiw-smsgate
-%global github_tag 1.1
+%global github_tag 1.3
 
 %global __pip pip
 
@@ -14,7 +14,7 @@
 
 Name:           python-%{github_repo}
 Version:        %{github_tag}
-Release:        3.vortex%{?dist}
+Release:        1.vortex%{?dist}
 Summary:        In-house Python utility to send text messages
 Vendor:         Vortex RPM
 
@@ -58,6 +58,9 @@ rm -rf %{buildroot}/usr/lib
 %config(noreplace) %{_sysconfdir}/wiw-smsgate.conf
 
 %changelog
+* Sun Jun 28 2015 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.3-1.vortex
+- Update to 1.3.
+
 * Mon Jan 12 2014 Ilya Otyutskiy <ilya.otyutskiy@icloud.com> - 1.1-3.vortex
 - Let's try this ugly hack to build for both EL6 and EL7.
 
